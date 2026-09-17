@@ -1,1 +1,3 @@
 gesture-ring-firmware\build\
+**/build/
+.vscode
