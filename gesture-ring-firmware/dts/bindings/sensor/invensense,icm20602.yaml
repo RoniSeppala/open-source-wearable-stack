@@ -1,0 +1,11 @@
+description: invensense icm-20602 IMU
+
+compatible: "invensense,icm20602"
+
+include: [i2c-device.yaml]
+
+on-bus: i2c
+
+properties:
+  reg:
+    required: true
