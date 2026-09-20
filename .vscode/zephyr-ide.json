@@ -1,0 +1,29 @@
+{
+  "projects": {
+    "gesture-ring-firmware": {
+      "relPath": "gesture-ring-firmware",
+      "name": "gesture-ring-firmware",
+      "buildConfigs": {
+        "build/esp32c6_devkitc/esp32c6/hpcore": {
+          "relBoardSubDir": "espressif/esp32c6_devkitc",
+          "board": "esp32c6_devkitc/esp32c6/hpcore",
+          "name": "build/esp32c6_devkitc/esp32c6/hpcore",
+          "compilerOptimization": "none",
+          "westBuildArgs": [],
+          "westBuildCMakeArgs": [
+            "-DCONFIG_NO_OPTIMIZATIONS=y"
+          ],
+          "confFiles": {
+            "config": [],
+            "overlay": []
+          }
+        }
+      },
+      "twisterConfigs": {},
+      "confFiles": {
+        "config": [],
+        "overlay": []
+      }
+    }
+  }
+}

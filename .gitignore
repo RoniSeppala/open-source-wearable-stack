@@ -1,3 +1,5 @@
 gesture-ring-firmware\build\
 **/build/
-.vscode
+.vscode/*
+!.vscode/extensions.json
+!.vscode/zephyr-ide.json
