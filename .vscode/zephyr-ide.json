@@ -14,8 +14,18 @@
             "-DCONFIG_NO_OPTIMIZATIONS=y"
           ],
           "confFiles": {
-            "config": [],
-            "overlay": []
+            "config": [
+              {
+                "path": "gesture-ring-firmware/config/esp32c6-devkitc.conf",
+                "extra": true
+              }
+            ],
+            "overlay": [
+              {
+                "path": "gesture-ring-firmware/hardware/esp32c6-devkitc.overlay",
+                "extra": true
+              }
+            ]
           }
         }
       },

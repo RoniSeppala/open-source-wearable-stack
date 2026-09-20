@@ -1,7 +1,8 @@
 {
   "recommendations": [
     "ms-vscode.cpptools",
-    "kylemicallefbonnici.dts-lsp"
+    "kylemicallefbonnici.dts-lsp",
+    "mylonics.zephyr-ide"
   ],
   "unwantedRecommendations": [
   ]
