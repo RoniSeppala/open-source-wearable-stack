@@ -5,5 +5,5 @@ project(smart_ring)
 
 target_sources(app PRIVATE
     src/main.c
-    src/imu.c
+    src/icm20602.c
 )
