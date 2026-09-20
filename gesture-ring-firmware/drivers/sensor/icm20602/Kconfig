@@ -1,0 +1,4 @@
+config SENSOR_ICM20602
+    bool "Add support for TDK ICM-20602 IMU
+    default n
+    depends on I2C

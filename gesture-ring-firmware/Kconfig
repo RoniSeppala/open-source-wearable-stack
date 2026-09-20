@@ -1,0 +1,7 @@
+# gesture-ring-firmware/Kconfig
+
+mainmenu "Gesture Ring Firmware"
+
+rsource "drivers/Kconfig"
+
+source "Kconfig.zephyr"

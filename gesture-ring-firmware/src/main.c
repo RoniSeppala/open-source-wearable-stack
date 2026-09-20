@@ -1,13 +1,10 @@
 #include <zephyr/kernel.h>
 #include <zephyr/device.h>
-#include <zephyr/drivers/i2c.h>
 #include <zephyr/drivers/led_strip.h>
 
-#define IMU_NODE DT_ALIAS(imu)
 #define LED_NODE DT_ALIAS(led_strip)
 
 static const struct device *const strip = DEVICE_DT_GET(LED_NODE);
-static const struct i2c_dt_spec imu = I2C_DT_SPEC_GET(IMU_NODE);
 
 int main(void)
 {

@@ -1,0 +1,1 @@
+add_subdirectory_ifdef(CONFIG_SENSOR_ICM20602 icm20602)
