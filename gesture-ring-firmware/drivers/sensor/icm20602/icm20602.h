@@ -1,3 +1,5 @@
+// SPDX-License-Identifier: MPL-2.0
+
 #ifndef ICM20602_H
 #define ICM20602_H
 
@@ -6,6 +8,9 @@
 
 #define ICM20602_REG_WHO_AM_I 0x75
 #define ICM20602_WHO_AM_I_VALUE 0x12
+#define ICM20602_REG_PWR_MGMT_1   0x6B
+#define ICM20602_REG_ACCEL_CONFIG 0x1C
+#define ICM20602_REG_GYRO_CONFIG  0x1B
 
 struct icm20602_config {
     struct i2c_dt_spec i2c;
@@ -15,6 +20,7 @@ struct icm20602_data {
     int16_t accel[3];
     int16_t gyro[3];
     int16_t temp;
+    bool sample_valid;
 };
 
 #endif
