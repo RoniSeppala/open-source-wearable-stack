@@ -68,7 +68,7 @@ static int icm20602_gyro_rads(const struct device *dev, struct sensor_value *val
         return -ENODATA;
     }
 
-    int64_t total_urads = ((int64_t)data->gyro[axis]*SENSOR_PI)/(131);
+    int64_t total_urads = ((int64_t)data->gyro[axis]*SENSOR_PI)/(131*180);
     return sensor_value_from_micro(val, total_urads);
 
     return 0;

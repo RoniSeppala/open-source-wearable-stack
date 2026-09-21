@@ -106,15 +106,8 @@ int main(void)
         }
 
         printf("\r\n\r\n\r\n");
-        printf("Accel x, %d.%06d\r\n", accel_x.val1, accel_x.val2);
-        printf("Accel y, %d.%06d\r\n", accel_y.val1, accel_y.val2);
-        printf("Accel z, %d.%06d\r\n", accel_z.val1, accel_z.val2);
+        printf("Accel x, %d.%06d\r\nAccel y, %d.%06d\r\nAccel z, %d.%06d\r\n\r\nGyro x, %d.%06d\r\nGyro y, %d.%06d\r\nGyro z, %d.%06d\r\n\r\nTemp, %d.%06d\r\n", accel_x.val1, accel_x.val2, accel_y.val1, accel_y.val2, accel_z.val1, accel_z.val2, gyro_x.val1, gyro_x.val2, gyro_y.val1, gyro_y.val2, gyro_z.val1, gyro_z.val2, die_temp.val1, die_temp.val2);
 
-        printf("Gyro x, %d.%06d\r\n", gyro_x.val1, gyro_x.val2);
-        printf("Gyro y, %d.%06d\r\n", gyro_y.val1, gyro_y.val2);
-        printf("Gyro z, %d.%06d\r\n", gyro_z.val1, gyro_z.val2);
-
-        printf("Temp, %d.%06d\r\n", die_temp.val1, die_temp.val2);
     }
 
     return 0;
