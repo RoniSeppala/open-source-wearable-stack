@@ -11,7 +11,8 @@
           "compilerOptimization": "none",
           "westBuildArgs": [],
           "westBuildCMakeArgs": [
-            "-DCONFIG_NO_OPTIMIZATIONS=y"
+            "-DCONFIG_NO_OPTIMIZATIONS=y",
+            "-DCMAKE_EXPORT_COMPILE_COMMANDS=ON"
           ],
           "confFiles": {
             "config": [

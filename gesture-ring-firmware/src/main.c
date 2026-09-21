@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: MPL-2.0
+
+
 #include <zephyr/kernel.h>
 #include <zephyr/device.h>
 #include <zephyr/drivers/led_strip.h>
