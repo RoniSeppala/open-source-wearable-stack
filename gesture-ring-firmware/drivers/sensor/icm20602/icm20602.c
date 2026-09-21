@@ -1,7 +1,5 @@
 /*
- * Based in part on TDK InvenSense Zephyr sensor drivers.
- *
- * SPDX-License-Identifier: Apache-2.0
+ * custom invesense_icm20602 firmware
  */
 
 #define DT_DRV_COMPAT invensense_icm20602
