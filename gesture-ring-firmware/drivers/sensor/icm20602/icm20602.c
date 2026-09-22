@@ -149,12 +149,6 @@ static int icm20602_init(const struct device *dev)
         return -ENODEV;
     }
 
-    // wake sensor (register 107)
-    err = i2c_reg_write_byte_dt(&config->i2c, ICM20602_REG_PWR_MGMT_1, 0x1);
-    if (err < 0){
-        return err;
-    }
-
     // set accelerometer range to +-2 g (register 28)
     err = i2c_reg_write_byte_dt(&config->i2c, ICM20602_REG_ACCEL_CONFIG, 0x00);
     if (err < 0){
@@ -167,6 +161,52 @@ static int icm20602_init(const struct device *dev)
         return err;
     }
 
+
+    //set low power related bits
+    // set awake, CLKSEL=001
+    err = i2c_reg_write_byte_dt(&config->i2c, ICM20602_PWR_MGMT_1, 0x01);
+    if (err < 0){
+        return err;
+    }
+
+    // set sensor output data rate to 100 Hz
+    err = i2c_reg_write_byte_dt(&config->i2c, ICM20602_SMPLRT_DIV, 0x09);
+    if (err < 0){
+        return err;
+    }
+
+    // clear bit 7, DLPF_CFG = 1
+    err = i2c_reg_write_byte_dt(&config->i2c, ICM20602_CONFIG, 0x01);
+    if (err < 0){
+        return err;
+    }
+
+    // set accel FCHOICE=0, 1 kHz filtered path
+    err = i2c_reg_write_byte_dt(&config->i2c, ICM20602_ACCEL_CONFIG2, 0x00);
+    if (err < 0){
+        return err;
+    }
+
+    // all six axes enabled
+    err = i2c_reg_write_byte_dt(&config->i2c, ICM20602_PWR_MGMT_2, 0x00);
+    if (err < 0){
+        return err;
+    }
+
+    // OUTPUT_LIMIT=1
+    err = i2c_reg_write_byte_dt(&config->i2c, ICM20602_ACCEL_INTEL_CTRL, 0x02);
+    if (err < 0){
+        return err;
+    }
+
+    // set gyro low power and 4x averaging
+    err = i2c_reg_write_byte_dt(&config->i2c, ICM20602_LP_MODE_CFG, 0xA0);
+    if (err < 0){
+        return err;
+    }
+
+
+    k_msleep(100); // wait to ensure complete setup
     return 0;
 }
 
