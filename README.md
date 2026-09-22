@@ -7,6 +7,8 @@ Read icm20602 with custom firmware and print data to serial monitor using an esp
 - wireless charging
 - bluetooth data transfer
 - sub 100e component cost
+- determine which way ring is by measuring capacitance on both internal surface edges capasitance??
+  - if not possible, then mark ring or use a determining tap gesture( tap surface/other finger, and determine joint location based on accelerometer + gyro, and determine ring orientation based on that)
 ## how to compile and develop
 ### requirements
 - zephyr
@@ -26,3 +28,18 @@ It is recommended to set the .vscode/settings.json file up according to instruct
 The project consists of no AI-genereated code
 
 AI has been used as a learning tool for zephyr(among other resources), parseing documentation and datasheets, as well as analysing build/compile errors, but all code and other files in this repository are otherwise made without the use of AI
+
+
+# possible gestures
+- finger tap/double tap/triple tap
+- when finger is horizontal compared to ground (e.g. pointing forwards or other)
+  - swipe left
+  - swipe right
+  - spipe up
+  - swipe down
+  - rotate counter clockwise
+  - rotate clockwise
+- when finger is vertical compared to ground
+  - rotate counter clockwise
+  - rotate clockwise
+  - general swipe (direction agnostic)
