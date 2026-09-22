@@ -1,39 +1,6 @@
-#include <zephyr/dt-bindings/led/led.h>
-#include <zephyr/dt-bindings/pinctrl/esp32c6-pinctrl.h>
-
 / {
 	aliases {
 		led-strip = &rgb_led;
 		imu = &my_sensor;
 	};
-
-	rgb_led: ws2812 {
-		compatible = "worldsemi,ws2812-pulse-io";
-		pulse-ios = <&rmt 0>;
-		chain-length = <1>;
-
-		color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
-	};
-};
-
-&i2c0 {
-	my_sensor: icm20602@69 {
-		compatible = "invensense,icm20602";
-		reg = <0x69>;
-		status = "okay";
-	};
-};
-
-&pinctrl {
-	rmt_led: rmt_led {
-		group1 {
-			pinmux = <RMT_OUT0_GPIO8>;
-		};
-	};
-};
-
-&rmt {
-	pinctrl-0 = <&rmt_led>;
-	pinctrl-names = "default";
-	status = "okay";
 };
