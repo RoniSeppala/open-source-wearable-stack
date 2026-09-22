@@ -5,6 +5,8 @@ project(gesture_ring_firmware)
 
 target_sources(app PRIVATE
     src/main.c
+    src/get_all_imu_data.c
+    src/gesture_test.c
 )
 
 add_subdirectory(drivers)

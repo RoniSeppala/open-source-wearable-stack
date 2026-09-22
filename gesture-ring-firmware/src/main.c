@@ -10,21 +10,14 @@
 #define LED_NODE DT_ALIAS(led_strip)
 #define IMU_NODE DT_ALIAS(imu)
 
+#include "get_all_imu_data.h"
+#include "gesture_test.h"
+
 static const struct device *const strip = DEVICE_DT_GET(LED_NODE);
 static const struct device *const imu = DEVICE_DT_GET(IMU_NODE);
 
 int main(void)
 {
-    struct sensor_value accel_x;
-    struct sensor_value accel_y;
-    struct sensor_value accel_z;
-
-    struct sensor_value gyro_x;
-    struct sensor_value gyro_y;
-    struct sensor_value gyro_z;
-
-    struct sensor_value die_temp;
-
     int err;
     struct led_rgb pixel = {
         .r = 20,
@@ -42,6 +35,7 @@ int main(void)
         return 0;
     }
 
+    struct gyro_data data;
     while (1) {
 
         // led blink
@@ -59,54 +53,15 @@ int main(void)
 
         pixel.r = 20;
 
-        // accelerometer checs
+        // accelerometer test
 
-        err = sensor_sample_fetch(imu);
-        if (err < 0 ) {
-            printf("Sample fetch error: %d\n", err);
-            return 0;
-        }
-
-        err = sensor_channel_get (imu, SENSOR_CHAN_ACCEL_X, &accel_x);
+        err = get_all_gyro_data(imu, &data);
         if (err < 0) {
             printf("Channel get error: %d\n", err);
-            return 0;
+            return -ENODATA;
         }
-        err = sensor_channel_get (imu, SENSOR_CHAN_ACCEL_Y, &accel_y);
-        if (err < 0) {
-            printf("Channel get error: %d\n", err);
-            return 0;
-        }
-        err = sensor_channel_get (imu, SENSOR_CHAN_ACCEL_Z, &accel_z);
-        if (err < 0) {
-            printf("Channel get error: %d\n", err);
-            return 0;
-        }
-
-        err = sensor_channel_get (imu, SENSOR_CHAN_GYRO_X, &gyro_x);
-        if (err < 0) {
-            printf("Channel get error: %d\n", err);
-            return 0;
-        }
-        err = sensor_channel_get (imu, SENSOR_CHAN_GYRO_Y, &gyro_y);
-        if (err < 0) {
-            printf("Channel get error: %d\n", err);
-            return 0;
-        }
-        err = sensor_channel_get (imu, SENSOR_CHAN_GYRO_Z, &gyro_z);
-        if (err < 0) {
-            printf("Channel get error: %d\n", err);
-            return 0;
-        }
-
-        err = sensor_channel_get (imu, SENSOR_CHAN_DIE_TEMP, &die_temp);
-        if (err < 0) {
-            printf("Channel get error: %d\n", err);
-            return 0;
-        }
-
         printf("\r\n\r\n\r\n");
-        printf("Accel x, %d.%06d\r\nAccel y, %d.%06d\r\nAccel z, %d.%06d\r\n\r\nGyro x, %d.%06d\r\nGyro y, %d.%06d\r\nGyro z, %d.%06d\r\n\r\nTemp, %d.%06d\r\n", accel_x.val1, accel_x.val2, accel_y.val1, accel_y.val2, accel_z.val1, accel_z.val2, gyro_x.val1, gyro_x.val2, gyro_y.val1, gyro_y.val2, gyro_z.val1, gyro_z.val2, die_temp.val1, die_temp.val2);
+        printf("Accel x, %d.%06d\r\nAccel y, %d.%06d\r\nAccel z, %d.%06d\r\n\r\nGyro x, %d.%06d\r\nGyro y, %d.%06d\r\nGyro z, %d.%06d\r\n\r\nTemp, %d.%06d\r\n", data.accel_x.val1, data.accel_x.val2, data.accel_y.val1, data.accel_y.val2, data.accel_z.val1, data.accel_z.val2, data.gyro_x.val1, data.gyro_x.val2, data.gyro_y.val1, data.gyro_y.val2, data.gyro_z.val1, data.gyro_z.val2, data.die_temp.val1, data.die_temp.val2);
 
     }
 
