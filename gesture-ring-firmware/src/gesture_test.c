@@ -12,6 +12,17 @@
 #include <zephyr/drivers/sensor.h>
 #include <zephyr/device.h>
 
+static int acceleration_normalisation(){
+    /*
+    magnitude = sqrt(ax*ax + ay*ay + az*az);
+
+    gx = ax / magnitude;
+    gy = ay / magnitude;
+    gz = az / magnitude;
+    */
+
+    
+}
 
 int get_gesture(const struct device *imu){
     int err;
