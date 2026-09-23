@@ -16,7 +16,12 @@
 #include <errno.h>
 #include <stdio.h>
 
-static void acceleration_normalisation(struct all_gyro_data_int64_t *pre_normalisation_data, struct all_imu_data_accel_normalised_float_gyro_int64_t *post_normalisation_data){
+static int gesture_estimation(struct all_imu_data_accel_normalised_float_gyro_int64_t *imu_data){
+
+    return 0;
+}
+
+void acceleration_normalisation(struct all_gyro_data_int64_t *pre_normalisation_data, struct all_imu_data_accel_normalised_float_gyro_int64_t *post_normalisation_data){
     /*
     magnitude = sqrt(ax*ax + ay*ay + az*az);
 
@@ -49,7 +54,7 @@ static void acceleration_normalisation(struct all_gyro_data_int64_t *pre_normali
     post_normalisation_data->die_temp = pre_normalisation_data->die_temp;
 }
 
-static void gyro_data_sensor_value_to_int64_t(const struct gyro_data *pre_transform, struct all_gyro_data_int64_t *post_transform){
+void gyro_data_sensor_value_to_int64_t(const struct gyro_data *pre_transform, struct all_gyro_data_int64_t *post_transform){
     post_transform->accel_x = sensor_value_to_micro(&pre_transform->accel_x);
     post_transform->accel_y = sensor_value_to_micro(&pre_transform->accel_y);
     post_transform->accel_z = sensor_value_to_micro(&pre_transform->accel_z);
