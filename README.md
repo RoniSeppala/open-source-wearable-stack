@@ -3,6 +3,7 @@
 Read icm20602 with custom firmware and print data to serial monitor using an esp32-c6-devkitc board for testing purposes.
 ## Design goals
 - 6-8 gestures with minimal user friction
+  - gesture execution thrugh a custom vector based gravity and orientation corrected 3d-grid system projected onto the rings plane
 - 7+ day battery life
 - wireless charging
 - bluetooth data transfer
