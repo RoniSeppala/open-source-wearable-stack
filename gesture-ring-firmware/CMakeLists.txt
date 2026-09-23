@@ -10,3 +10,4 @@ target_sources(app PRIVATE
 )
 
 add_subdirectory(drivers)
+add_subdirectory(lib)
