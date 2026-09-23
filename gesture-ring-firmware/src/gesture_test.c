@@ -34,18 +34,17 @@ void acceleration_normalisation(struct all_gyro_data_int64_t *pre_normalisation_
     float accel_y = (float)pre_normalisation_data->accel_y;
     float accel_z = (float)pre_normalisation_data->accel_z;
 
-    int64_t magnitude = sqrt(accel_x*accel_x+accel_y*accel_y+accel_z*accel_z);
+    float magnitude = sqrtf(accel_x*accel_x+accel_y*accel_y+accel_z*accel_z);
 
-        if (magnitude == 0.0f) {
+    if (magnitude == 0.0f) {
         post_normalisation_data->accel_x = 0.0f;
         post_normalisation_data->accel_y = 0.0f;
         post_normalisation_data->accel_z = 0.0f;
-        return;
+    } else {
+        post_normalisation_data->accel_x = pre_normalisation_data->accel_x / magnitude;
+        post_normalisation_data->accel_y = pre_normalisation_data->accel_y / magnitude;
+        post_normalisation_data->accel_z = pre_normalisation_data->accel_z / magnitude;
     }
-
-    post_normalisation_data->accel_x = pre_normalisation_data->accel_x / magnitude;
-    post_normalisation_data->accel_y = pre_normalisation_data->accel_y / magnitude;
-    post_normalisation_data->accel_z = pre_normalisation_data->accel_z / magnitude;
 
     post_normalisation_data->gyro_x = pre_normalisation_data->gyro_x;
     post_normalisation_data->gyro_y = pre_normalisation_data->gyro_y;
